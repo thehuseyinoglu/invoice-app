@@ -7,24 +7,7 @@
 <script setup>
 import AppSidebar from "./components/appSidebar.vue"
 import InvoiceContent from "./components/InvoiceContent.vue"
-import { ref,reactive } from "vue";
+import Operations from "./composables/Operations.js"
 
-const invoiceList = ref([]);
-
-const state = reactive({
-  activeInvoice:null
-})
-
-const saveInvoice = (invoice) => {
- 
-  invoiceList.value.push(invoice)
-}
-
-const editInvoice = (invoice)=>{
-state.activeInvoice = invoice
-}
-const deleteInvoice = (invoice) =>{
-  invoiceList.value = invoiceList.value.filter(i => i.id != invoice.id)
-  console.log(invoceList);
-}
+const { invoiceList,state,saveInvoice,editInvoice,deleteInvoice} = Operations();
 </script>
